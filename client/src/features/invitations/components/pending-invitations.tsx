@@ -116,25 +116,27 @@ export function PendingInvitations() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => acceptInvitation(invitation.id)}
-                disabled={isAccepting}
-              >
-                {isAccepting ? (
-                  <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <Check className="mr-2 h-4 w-4" />
-                )}
-                Accept
-              </Button>
-              <Button variant="ghost" size="sm" disabled={isAccepting}>
-                <X className="mr-2 h-4 w-4" />
-                Decline
-              </Button>
-            </div>
+            {invitation.status === "PENDING" && (
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => acceptInvitation(invitation.id)}
+                  disabled={isAccepting}
+                >
+                  {isAccepting ? (
+                    <RefreshCw className="mr-2 h-4 w-4 animate-spin" />
+                  ) : (
+                    <Check className="mr-2 h-4 w-4" />
+                  )}
+                  Accept
+                </Button>
+                <Button variant="ghost" size="sm" disabled={isAccepting}>
+                  <X className="mr-2 h-4 w-4" />
+                  Decline
+                </Button>
+              </div>
+            )}
           </div>
         ))}
 
